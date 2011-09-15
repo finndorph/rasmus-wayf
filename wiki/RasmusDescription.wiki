@@ -1,6 +1,6 @@
 #labels Featured
 ==RASMUS: Remote Access Service Monitor for Users and Services==
-RASMUS is a business intelligence tool which presents an econimic view of the benifit of the federation.
+RASMUS is a business intelligence tool which presents an economic view of the benefit of the federation.
 
 == Description ==
 As each entity (SP and IdP) only makes a single technical connection to the federation hub, which is used for access requests/responses, the diagram in a sense also shows all the integrations that were not needed by the connected entities. 
@@ -11,11 +11,10 @@ RASMUS match the integration cost values of all connections with real time usage
 
 In the graphical view any entity, both SP and IdP, may be clicked to get a detailed view and calculations. 
 
-The benifit of each entity is calculated as the difference between the total integration cost for all used SPs/IdPs (which would have been needed if the federation was not available) minus the entity's own connection (which would not have been established if the federation was not there). 
+The benefit of each entity is calculated as the difference between the total integration cost for all used SPs/IdPs (which would have been needed if the federation was not available) minus the entity's own connection (which would not have been established if the federation was not there). 
 
 Information about the potential number of users at each IdP may be entered to be matched with the number indivual users. From this percentage the 'coverage' of federated users at the IdP can be calculated.
 
 The integration cost of the entity is split into two: the cost of the federation (which supported the process) and the cost for SP/IdP itself ('local cost'). Based on the 'local cost' and knowledge about the number of succesfull federation logins from that IdP, the cost per login can be decucted. The more logins, the lower price per login, as the integration cost is static when first established.
 
 When clicking the federation hub entity, the sum of all connections costs (one-to-one connection) is presented next to the sum of all connections used if the federation was not there (one-to-many connection) - the overall benifit of the federation is presented as the difference between the two numbers.
-
