@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta charset="utf-8" />
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<style>
+body {
+    margin: 2em;
+    font-family: arial;
+}
+a:link , a:visited, a:hover, a:active { 
+  color: #060;
+  text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+    empty-cells:hide;
+}
+
+td {
+    vertical-align: top;
+    padding: 1ex;
+}
+
+td.r {
+    text-align: right;
+}
+
+input {
+    border-style: hidden;
+    font-size: xx-small;
+    width: 7ex;
+    text-align: right;
+    background-color: #eee;
+    color: #060;
+}
+
+select {
+    color: #060;
+}
+
+table.inner td {
+    padding: 3px;
+    text-align: right;
+    font-size: xx-small;
+    border: thin #060 solid;
+    background-color: #eee;
+    color: #060;
+    vertical-align: middle;
+}
+table.inner td.x {
+    padding: 4.3px 3px 3px 3px;
+}
+
+table {
+    color: #060;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.benefit td
+{   
+    padding: 0 0.5em;
+	font-size: medium;
+	text-align: left;
+}
+
+table.inner th {
+    padding: 3px;
+    text-align: right;
+    border: thin #060 solid;
+    color: #060;
+    text-align: center;
+}
+
+table.inner tr.small th {
+    font-size: 60%;
+}
+
+polygon {
+    background-color: #060;
+
+}
+
+div.c { 
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+table.xx td {
+    font-size: medium;
+    padding: 5px 10px;
+}
+
+table.inner td.l {
+    text-align: left;
+}
+
+form { display: inline-block; }
+</style>
+<script>
+$(document).ready(function() {
+    $("input").change(function(e) {
+        params = new Object;
+        params[e.target.name] = e.target.value;
+        $.post("/moth.php/update", params);
+    });
+});
+
+/**
+ * MothSVG 
+ *
+ * @author Jacob Christiansen <jach@wayf.dk>
+ * @author Madsd Freek <freek@ruc.dk>
+ * @copyrigth 2011
+ */
+
+// Global object
+var mothsvg = mothsvg || {};
+
+/**
+ * Function that resizes the object tag to the size of the SVG document set for
+ * the object.
+ *
+ * @param string The id og the object
+ */
+mothsvg.resize = function (container) {                                                                        
+    "use strict";      
+
+    var svgcontainer = document.getElementById(container),
+        svgdoc,
+        rootelm,
+        width,
+        height;
+
+    // Get the SVG document    
+    try {                                                                                                     
+        svgdoc = svgcontainer.contentDocument;
+    } catch (Err) {                                                                                           
+        svgdoc = svgcontainer.getSVGDocument();
+    }                      
+    // Extract the root element and get the height and width    
+    rootelm = svgdoc.documentElement;
+    if (rootelm.attributes.width !== null) {                                                                
+        width = rootelm.attributes.width.nodeValue;                                                    
+        $("#" + container).attr("width", width);
+        height = rootelm.attributes.height.nodeValue;
+        // FF just add a little extra to avoid scrollbars ...
+        height++;
+        $("#" + container).attr("height", height);
+    }
+};
+
+</script>
+</head>
+<body>
+<?= $content ?>
+</body>
